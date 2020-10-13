@@ -1,0 +1,45 @@
+# YAML ("#" beginning a line denotes a comment and will be ignored)
+
+# Key-Value Pairs (": " required after key)
+Fruit: Apple
+Vegetable: Carrot
+Liquid: Water
+Meat: Chicken
+
+# Array/Lists ("-" indicates element of an array)
+# Ordered (two lists with identically-valued items will only be "equal" if the items are in the same order)
+# Best for set of similar objects (each of which could be a dictionary)
+Fruits:
+-	Orange
+-	Apple
+-	Banana
+
+Vegetables:
+-	Carrot
+-	Cauliflower
+-	Tomato
+
+# Dictionary/Map (must have uniform blank space before each item)
+# Unordered (two dictionaries with identically-valued properties will be "equal", regardless of properties order)
+# Best for single objects with many descriptors
+Banana:
+	Calories: 105
+	Fat: 0.4 g
+	Carbs: 27 g
+
+Grapes:
+	Calories: 62
+	Fat: 0.3 g
+	Carbs: 16 g
+
+# List of Dictionary of Key-Values
+Fruits:
+	-	Banana:
+			Calories: 105
+			Fat: 0.4 g
+			Carbs: 27 g
+
+	-	Grapes:
+			Calories: 62
+			Fat: 0.3 g
+			Carbs: 16 g

@@ -1,0 +1,21 @@
+#block_rescue.yml
+---
+- name: Deploy web app and display errors if block fails
+  hosts: all
+  tasks:
+    - name: Install web app
+      block:
+        - name: Install dependencies
+          # details
+        - name: Install MySQL database
+          # details
+        - name: Start MySQL service
+          # details
+        - name: Install Python Flask dependencies
+          # details
+        - name: Run web server
+          # details
+      rescue:
+        - name: Errors
+          debug:
+            msg: "Playbook has failed for {{ inventory_hostname }}"

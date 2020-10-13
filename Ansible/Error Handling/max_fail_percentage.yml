@@ -1,0 +1,16 @@
+#any_errors_fatal.yml
+---
+- name: "Deploy web app but fail/stop play if > 30% failures"
+  hosts: all
+  max_fail_percentage: 30
+  tasks:
+    - name: Install dependencies
+      # details
+    - name: Install MySQL database
+      # details
+    - name: Start MySQL service
+      # details
+    - name: Install Python Flask dependencies
+      # details
+    - name: Run web server
+      # details

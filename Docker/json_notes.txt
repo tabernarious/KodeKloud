@@ -1,0 +1,56 @@
+# JSON
+
+
+
+# JSON PATH (query language to parse JSON data)
+# Root element "$"
+# Query outputs as array of results (in square brackets) "[ ... ]"
+
+> $.car (show details of "car" dictionary at the root of the JSON)
+> $.bus (show details of "bus" dictionary at the root of the JSON)
+> $.car.color (show "color" data from "car" dictionary at the root of the JSON)
+> $.bus.price
+
+> $.vehicles.car (show details of "car" dictionary from "vehicles" dictionary at the root of the JSON)
+
+# Get first element of a list at the root of the JSON
+$[0]
+
+# Get all numbers in a list greater than 40
+# Use "?()" to search
+# "@" represents "check each element"
+    # @ == 40
+    # @ > 40
+    # @ != 40
+    # @ in [40,43,45]
+    # @ nin [40,43,45]
+
+$[?(@>40)]
+
+{
+  "car": {
+    "color": "blue",
+    "price": "$20,000",
+    "wheels": [
+      {
+        "model": "X345ERT",
+        "location": "front-right"
+      },
+      {
+        "model": "X236DEM",
+        "location": "rear-right"
+      },
+      {
+        "model": "X346GRX",
+        "location": "front-left"
+      },
+      {
+        "model": "X987XMV",
+        "location": "rear-left"
+      },
+    ]
+  }
+}
+      
+# List the wheel model for all "rear-right" wheels
+$.car.wheels[?(@.location == "rear-right")].model

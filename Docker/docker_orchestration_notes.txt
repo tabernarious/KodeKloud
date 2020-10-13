@@ -1,0 +1,58 @@
+# Docker Swarm: Easy to set up, but limited features.
+# Kubernetes: Difficult to set up, but lots of advanced features; highly supported in the community and across cloud providers.
+# Mesos (Apache): Difficult to set up, but lots of advanced features; not well supported.
+
+# Docker SWARM
+# Advanced networking, load balancing,
+docker service create --replicas=100 nodejs
+
+# Start with multiple docker hosts
+
+# Designate one host as the swarm manager
+docker swarm init --advertise-addr 192.168.1.12
+
+# Join worker nodes (hosts)
+docker swarm join --token SWMTKN-1... 192.168.1.2:2377
+
+# Docker Swarm Orchestrator
+# Docker "service"
+docker service create --replicas=3 my-web-server
+docker service create --replicas=3 --network frontend my-web-server
+docker service create --replicas=3 -p 8080:80 my-web-server
+
+# KUBERNETES
+kubectl run --replicas=1000 my-web-server
+kubectl scale --replicas=2000 my-web-server
+
+# POD AutoScalers
+# Cluster AutoScalers
+
+kubectl rolling-update my-web-server --image=web-server:2
+kubectl rolling-update my-web-server --rollback
+
+# Kubernetes uses Docker Hosts, but also supports rkt and CRI-O (other container services)
+
+# Node (Minion): Virtual or hardware machine where containers are launched
+# Cluster: Set of nodes grouped together
+# Master: Watches over nodes and is responsible for orchestrating containers on the worker nodes.
+
+# Componenents:
+Master
+-API Server (frontend)
+-etcd (key-value store, distributed across the cluster (masters?))
+-Controller (brain behind orchestration; noticing when nodes go up/down
+-Scheduler (distributing work/containers across multiple nodes)
+-kubectl (Kubernetes CLI; used to manage the cluster)
+
+Nodes
+-kubelet (agent that runs on each node in the cluster; ensures containers are running as expected)
+-Container Runtime (Docker)
+
+# Deploy app on cluster
+kubectl run hello-minikube
+
+# View cluster info
+kubectl info
+
+# List all nodes in the cluster
+kubectl get nodes

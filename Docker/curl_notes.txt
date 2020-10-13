@@ -1,0 +1,7 @@
+#cURL Download to File
+sudo curl -O https://downloads.apache.org/tomcat/tomcat-8/v<version number>/bin/apache-tomcat-<version number>.tar.gz
+sudo curl -O https://downloads.apache.org/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57.tar.gz
+
+#Tomcat unpack and "install" (mv)
+sudo tar -xvf apache-tomcat-8.5.57.tar.gz
+sudo mv apache-tomcat-8.5.57 /opt/apache-tomcat-8

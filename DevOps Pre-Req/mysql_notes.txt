@@ -1,0 +1,36 @@
+
+
+sudo yum install https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+sudo yum install mysql-community-server
+
+# MySQL Login (will be prompted for temp password from /var/log/mysqld.log
+$ mysql -u root -p
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '[new pass]';
+
+$ mysql_secure_installation
+
+> SHOW DATABASES;
+> CREATE DATABASE [name];
+> USE [name];
+> CREATE TABLE persons
+(
+  Name varchar(255),
+  Age int,
+  Location varchar(255)
+);
+> SHOW TABLES;
+> INSERT INTO person values ( "John Doe", 45, "New York");
+> SELECT * FROM persons;
+
+# Create a user that can connect only from 'localhost'
+> CREATE USER 'daniel'@'localhost' IDENTIFIED BY '[pass]';
+> CREATE USER 'daniel'@'192.168.1.10'...
+> CREATE USER 'daniel'@'%'...
+
+> GRANT [permission] ON [db.table] TO 'daniel'@'%';
+> GRANT SELECT ON [db.table] TO 'daniel'@'%';
+
+SELECT, CREATE, DROP, DELETE, INSERT, SELECT, UPDATE, ALL PRIVILEGES
+
+> SHOW GRANTS FOR 'daniel'@'%';

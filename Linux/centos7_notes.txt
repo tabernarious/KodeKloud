@@ -1,0 +1,51 @@
+
+
+https://www.if-not-true-then-false.com/2014/centos-7-netinstall-guide/
+http://mirrors.usinternet.com/centos/7/os/x86_64/
+http://mirrors.sonic.net/centos/7/os/x86_64/	
+
+hostnamectl set-hostname centos7.tabernarious.net
+
+cat /etc/hostname
+cat /etc/hosts
+cat /etc/resolve.conf
+
+su
+usermod -aG wheel danielt
+exit
+
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+cat >> ~/.ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQBwb+aIcjbuk6XYeazgDWIFyBd2bEbcByn0YG0O7Bg+PRx0iMk+5h9HGcv/bRQPZx65J89jNv5PlAx9mdvzIqp6tOwAZYmBqfTwhwhqy+luscQXnzkzcyjVtFMaW9oimi2JFhLkoldACg+wbTFOF0wvcOw6jG8PB0n3K/AyqGrxMB0ZtxRfGuRi1uYM5rjgn7Kw1sO81wrLapT+36Rxkk/ILcEnjJ3lQ8m8m83YfzYH4lowfQEVyFdbAivaAAFtCGtgI7fYUCpUbNPk0j8U6MnGlttqY00SEbv3Gc0kk3aV/ajVucn+vzUVhZt8O/SpTV6evSNW2JFpDm1LeyL0XWF9 rsa-key-20130211
+chmod 600 ~/.ssh/authorized_keys
+
+cat >> ~/.bashrc
+alias ll='ls -lah --color=auto' 2>/dev/null
+
+sudo yum -y update; sudo yum -y install epel-release
+
+# VMware Tools without or with desktop (either requires reboot)
+sudo yum -y install open-vm-tools
+sudo yum -y install open-vm-tools-desktop
+
+# Virtual Box Additions (never did get it to work)
+# https://linuxconfig.org/how-to-install-virtualbox-guest-additions-on-centos-7-linux
+sudo yum -y install perl gcc dkms kernel-devel kernel-headers make bzip2
+ls -l /usr/src/kernels/$(uname -r)
+ln -s /usr/src/kernels/3.10.0-1127.18.2.el7.x86_64 /usr/src/kernels/3.10.0-1127.el7.x86_64
+[insert VirtualBox Guest Additions CD and Run]
+
+sudo systemctl status network.service
+sudo systemctl status network
+sudo systemctl restart network.service
+sudo systemctl restart network
+
+Add temporary IP
+ip a add 10.30.130.1/16 dev ens224
+ip a delete 10.30.130.1/16 dev ens224
+
+sudo ip route add 0.0.0.0/0 via 10.10.0.1 dev ens192
+sudo ip route delete 0.0.0.0/0 via 10.10.0.1 dev ens192
+sudo ip route add 10.90.102.0/24 via 10.30.102.1 dev ens224
+sudo ip route delete 10.90.102.0/24 via 10.30.102.1 dev ens224

@@ -1,0 +1,6 @@
+
+
+# API Key
+430a5aba72846bebe7ae5d0886efb5ae
+
+api.zerossl.com/example_endpoint?access_key=EXAMPLE_KEY

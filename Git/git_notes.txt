@@ -1,0 +1,33 @@
+# GIT (local)
+# Install and Check Version
+yum install git
+git version
+
+# Initialize Local Repository (creates non-hidden directory [repo name], if used; otherwise creates hidden ".git" directory in current directory)
+git init [repo name]
+
+# Check Status of Repository (current directory)
+git status
+
+# Stage Untracked or Changed File(s) (adds to list of files ready to be committed) (changing a file removes it from Staging)
+git add [file(s)]
+git status
+
+# Commit Repository with comment
+git commit -m "Initial Commit"
+
+# GIT (remote) (ref name is local-only and does not have to match remote repository)
+git remote add [ref name] [url]
+
+# First time push (requires -u to create master branch?)
+git push [ref name] [branch]
+git push -u [ref name] master
+
+# Clone Repository
+git clone [url]
+
+# View remote repositories?
+git remote -V
+
+# Pull Changes
+git pull
