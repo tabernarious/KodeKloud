@@ -13,6 +13,9 @@
 
 # The "Gathering Facts" task is run with all playbooks using the "setup" module.
 
+# Get facts for host1 and store in hosts.facts
+ansible host1 -i inventory -m setup > host1.facts
+
 # Variables stored in ansible_facts
 ---
 - name: "Print ansible_facts"

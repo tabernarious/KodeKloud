@@ -1,4 +1,11 @@
-# Ansible Configuration
+# Ansible Configuration Order of Precedence (will stop looking once it finds a config file)
+ANSIBLE_CONFIG=/my/path/to/ansible.cfg (environment variable)
+ansible.cfg (in current directory)
+.ansible.cfg (in current user's home directory)
+/etc/ansible/ansible.cfg
+
+# Changes are picked up every time Ansible is run.
+
 # Global configuration
 /etc/ansible/ansible.cfg
 
@@ -35,3 +42,8 @@ ansible-config view
 
 # Show comprehensive list of current settings (and where they were picked up)
 ansible-config dump
+
+# Common Configuration Variables
+ansible_managed (text inserted at top of files managed by Ansible)
+forks (see parallellism and strategy)
+inventory (location of default inventory)
