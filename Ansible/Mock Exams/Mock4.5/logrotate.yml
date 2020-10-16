@@ -4,5 +4,3 @@
   gather_facts: yes
   roles:
     - role: ansible.logrotate
-      
-
