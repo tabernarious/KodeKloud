@@ -1,4 +1,8 @@
 #block_rescue.yml
+
+# "block/rescue" is like "try/catch"
+# "block" attempts to execute all tasks within the block; if one fails the whole block fails and the "rescue" block is run
+
 ---
 - name: Deploy web app and display errors if block fails
   hosts: all
@@ -19,3 +23,18 @@
         - name: Errors
           debug:
             msg: "Playbook has failed for {{ inventory_hostname }}"
+...
+
+---
+- hosts: local
+  tasks:
+    - name: get file
+      block:
+        - get_url:
+            url: "http://scoldham6/index.html"
+            dest: "/tmp/index_file"
+      rescue:
+        - debug: msg="The file doesn't exist!"
+      always:
+        - debug: msg="Play done!"
+...

@@ -1,4 +1,7 @@
-#any_errors_fatal.yml
+# `max_fail_percentage`
+The `max_fail_percentage` sets a threshold of host failures within a Batch that will stop the play completely.
+
+```yaml
 ---
 - name: "Deploy web app but fail/stop play if > 30% failures"
   hosts: all
@@ -14,3 +17,4 @@
       # details
     - name: Run web server
       # details
+```

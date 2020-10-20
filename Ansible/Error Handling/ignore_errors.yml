@@ -20,3 +20,18 @@
         subject: Web server configured successfully - {{ inventory_hostname }}
         body: Web server configured successfully - {{ inventory_hostname }}
       ignore_errors: yes
+...
+
+---
+- hosts: local
+  tasks:
+    - name: get files
+      get_url:
+        url: "http://{{item}}/index.html"
+        dest: "/tmp/{{item}}"
+      ignore_errors: yes
+      with_items:
+        - scoldham2
+        - scoldham3
+        - scoldham4
+...
