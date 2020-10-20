@@ -1,9 +1,0 @@
-# Ansible uses forks to talk to multiple servers simultaneously.
-# The default value for forks is 5, which results in Batch-style strategy (serial: 5)
-# https://docs.ansible.com/ansible/latest/user_guide/playbooks_strategies.html
-
-# /etc/ansible/ansible.cfg
-forks = 5
-
-# Forks can also be set at runtime
-ansible-playbook -f 30 my_playbook.yml
