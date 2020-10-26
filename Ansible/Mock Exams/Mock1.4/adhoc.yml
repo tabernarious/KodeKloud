@@ -1,3 +1,0 @@
-# Show facts
-ansible localhost -m setup
-ansible -i inventory node02 -m setup > node02.facts

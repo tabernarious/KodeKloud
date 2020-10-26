@@ -1,8 +1,0 @@
----
-- name: Print hostname variables
-  hosts: all
-  tasks:
-  - debug:
-      msg: Full Inventory Hostname {{ inventory_hostname }}
-  - debug:
-      msg: Short Inventory Hostname {{ inventory_hostname_short }}

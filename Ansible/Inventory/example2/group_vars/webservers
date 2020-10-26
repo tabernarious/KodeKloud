@@ -1,2 +1,0 @@
-httpd_webroot: /var/www/
-httpd_config: /etc/httpd/
