@@ -253,3 +253,53 @@ variable kitty {
     default = ["cat", 7, true]
 }
 ```
+
+## Ways to Define Variables
+
+### Assign the `default` value.
+```
+variable testvar1 {
+    default     = "This is testvar1!"
+    type        = string
+    description = "A test string"
+}
+```
+
+### Enter interactively during `terraform apply` by not defining a default value.
+```
+variable testvar1 {
+    type        = string
+    description = "A test string"
+}
+```
+```
+var.testvar1
+  Enter a value: This is testvar1!
+```
+
+### Entering in-line with `terraform apply` and the `-var` option.
+`terraform apply -var "testvar1=This is testvar1!" -var "testvar2=Another testvar"`
+
+### Setting Environment Variables prefixed with `TF_VAR_`
+```sh
+$ export TF_VAR_testvar1="This is testvar1!"
+$ export TF_VAR_testvar2="Another testvar"
+```
+
+### Auto-Loaded Variable Definition Files
+These filenames will be auto-loaded when running `terraform apply`:
+* `terraform.tfvars`
+* `terraform.tfvars.json`
+* `*.auto.tfvars`
+* `*.auto.tfvars.json`
+
+`terraform.tfvars` (auto-loaded)
+```
+testvar1="This is testvar1!"
+testvar2="Another testvar"
+```
+
+### Manually-Specified Variable Definition Files
+Any variable definition file not auto-loaded (see other section), must be specified with the `-var-file` option
+
+`variables.tfvars` (not auto-loaded)
