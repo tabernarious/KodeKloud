@@ -240,7 +240,8 @@ RUN pip install flask-mysql
 
 COPY app.py /opt/app.py
 
-ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
+ENTRYPOINT FLASK_APP=/opt/app.py
+flask run --host=0.0.0.0
 
 # BUILD DOCKER IMAGE
 
